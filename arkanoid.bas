@@ -7,7 +7,7 @@ ss = 0
 zivoty = 3
 sh$ = "ON"
 
-LOCATE 10, 14: COLOR 4: PRINT "Do you want the sound?"
+LOCATE 10, 14: COLOR 4: PRINT "Do you want a sound?"
 
 
 LINE (100, 185)-(200, 215), 4, B
@@ -37,11 +37,11 @@ GOTO sounds
 pakooo:
 CLS
 
-LOCATE 20, 14: COLOR 4: PRINT "Write your name here:"
+LOCATE 20, 14: COLOR 4: PRINT "Enter your name:"
 LOCATE 23, 14: PRINT "max. 8 symbols"
 LOCATE 21, 14: COLOR 4: INPUT name$
 CLS
-LOCATE 20, 15: COLOR 4: PRINT "FOR LAUNCH PRESS ENTER";
+LOCATE 20, 15: COLOR 4: PRINT "PRESS ENTER TO START";
 LOCATE 21, 15: COLOR 4: PRINT "PLAYER NAME: "; name$
 SLEEP
 
@@ -124,7 +124,7 @@ GOTO start
 koniec:
 zivoty = zivoty - 1
 IF sh$ = "on" THEN SOUND 2000, 20
-IF zivoty > 0 THEN LOCATE 12, 33: PRINT "That was so bad! PRESS ENTER": GOTO res
+IF zivoty > 0 THEN LOCATE 12, 33: PRINT "Oops! PRESS ENTER": GOTO res
 COLOR 4: LOCATE 20, 20: PRINT "YOU ARE LOOSER": LOCATE 21, 20: PRINT "Score": LOCATE 21, 30: PRINT o:
 IF sh$ = "on" THEN SOUND 1000, 30:
 
@@ -134,5 +134,5 @@ SLEEP
 
 
 OPEN name$ + ".txt" FOR OUTPUT AS #1
-PRINT #1, "SCORE: "; o; CHR$(13); CHR$(10); "MENO HRACA: "; name$; " CAS: "; TIME$; " DATUM: "; DATE$; "  ARKANOID BY DODO"; CHR$(13); CHR$(10): CLOSE
+PRINT #1, "SCORE: "; o; CHR$(13); CHR$(10); "PLAYER NAME: "; name$; " TIME: "; TIME$; " DATE: "; DATE$; "  ARKANOID BY DODO"; CHR$(13); CHR$(10): CLOSE
 GOTO new
